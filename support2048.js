@@ -21,7 +21,7 @@ function getNumberBackgroundColor(number) {
         case 2:
             return "#eee";
         case 4:
-            return "#70572e";
+            return "#673e36";
         case 8:
             return "#d75538";
         case 16:
@@ -33,9 +33,9 @@ function getNumberBackgroundColor(number) {
         case 128:
             return "#101e63";
         case 256:
-            return "#fff6d9";
+            return "##e8e059";
         case 512:
-            return "#b59870";
+            return "#8b6c42";
         case 1024:
             return "#e63459";
         case 2048:
