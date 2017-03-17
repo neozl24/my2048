@@ -1,123 +1,187 @@
+/* jshint undef: false, unused: false */
+
 documentWidth = window.screen.availWidth;
 gridContainerWidth = 0.92 * documentWidth;
 cellSideLength = 0.18 * documentWidth;
 cellSpace = 0.04 * documentWidth;
 
-function getPosTop(i, j){
-	return i*cellSideLength + (i + 1)*cellSpace;
+function getPosTop(i, j) {
+    'use strict';
+    return i * cellSideLength + (i + 1) * cellSpace;
 }
 
 function getPosLeft(i, j) {
-	return j*cellSideLength + (j + 1)*cellSpace;
+    'use strict';
+    return j * cellSideLength + (j + 1) * cellSpace;
 }
 
 function getNumberBackgroundColor(number) {
-	switch(number){
-		case 2: return "#eee4da"; break;
-		case 4: return "#ede0b8"; break;
-		case 8: return "#f2b179"; break;
-		case 16: return "#f59563"; break;
-		case 32: return "#f67e5f"; break;
-		case 64: return "#f65e3b"; break;
-		case 128: return "#edbf52"; break;
-		case 256: return "#edcc61"; break;
-		case 512: return "#9c0"; break;
-		case 1024: return "#33b5e5"; break;
-		case 2048: return "#09c"; break;
-		case 4096: return "#a6c"; break;
-		case 8192: return "#93e"; break;
-	}
-	return "black";
+    'use strict';
+    switch (number) {
+        case 2:
+            return "#eee4da";
+        case 4:
+            return "#ede0b8";
+        case 8:
+            return "#f2b179";
+        case 16:
+            return "#f59563";
+        case 32:
+            return "#f67e5f";
+        case 64:
+            return "#f65e3b";
+        case 128:
+            return "#edbf52";
+        case 256:
+            return "#edcc61";
+        case 512:
+            return "#9c0";
+        case 1024:
+            return "#33b5e5";
+        case 2048:
+            return "#09c";
+        case 4096:
+            return "#a6c";
+        case 8192:
+            return "#93e";
+    }
+    return "black";
 }
 
 function numberToText(number) {
-	switch(number){
-		case 2: return "鼠"; break;
-		case 4: return "牛"; break;
-		case 8: return "虎"; break;
-		case 16: return "兔"; break;
-		case 32: return "龙"; break;
-		case 64: return "蛇"; break;
-		case 128: return "马"; break;
-		case 256: return "羊"; break;
-		case 512: return "猴"; break;
-		case 1024: return "鸡"; break;
-		case 2048: return "狗"; break;
-		case 4096: return "猪"; break;
-		case 8192: return "人"; break;		
-	}
-	return "猫";
+    'use strict';
+    switch (number) {
+        case 2:
+            return "鼠";
+        case 4:
+            return "牛";
+        case 8:
+            return "虎";
+        case 16:
+            return "兔";
+        case 32:
+            return "龙";
+        case 64:
+            return "蛇";
+        case 128:
+            return "马";
+        case 256:
+            return "羊";
+        case 512:
+            return "猴";
+        case 1024:
+            return "鸡";
+        case 2048:
+            return "狗";
+        case 4096:
+            return "猪";
+        case 8192:
+            return "人";
+    }
+    return "猫";
 }
 
 function getNumberColor(number) {
-	if(number <= 4)
-		return "#776e65";
+    'use strict';
+    if (number <= 4) {
+        return "#776e65";
+    }
 
-	return "white";
+    return "white";
 }
 
 function hasSpace(board) {
-	for(var i = 0; i < 4; i++)
-		for(var j = 0; j < 4; j++)
-			if (board[i][j] == 0) 
-				return true;
+    'use strict';
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            if (board[i][j] === 0) {
+                return true;
+            }
+        }
+    }
 
-	return false;		
+    return false;
 }
 
 function canMoveLeft(board) {
-	for(var i = 0; i < 4; i++)
-		for(var j = 1; j < 4; j++)
-			if (board[i][j] != 0)
-				if (board[i][j-1] == 0 || board[i][j-1] == board[i][j])
-					return true;
+    'use strict';
+    for (var i = 0; i < 4; i++) {
+        for (var j = 1; j < 4; j++) {
+            if (board[i][j] !== 0) {
+                if (board[i][j - 1] === 0 || board[i][j - 1] === board[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
 
-	return false;
+    return false;
 }
 
 function canMoveRight(board) {
-	for(var i = 0; i < 4; i++)
-		for(var j = 2; j >= 0; j--)
-			if (board[i][j] != 0)
-				if (board[i][j+1] == 0 || board[i][j+1] == board[i][j])
-					return true;
+    'use strict';
+    for (var i = 0; i < 4; i++) {
+        for (var j = 2; j >= 0; j--) {
+            if (board[i][j] !== 0) {
+                if (board[i][j + 1] === 0 || board[i][j + 1] === board[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
 
-	return false;
+    return false;
 }
 
 function canMoveUp(board) {
-	for(var j = 0; j < 4; j++)
-		for(var i = 1; i < 4; i++)
-			if (board[i][j] != 0)
-				if (board[i-1][j] == 0 || board[i-1][j] == board[i][j])
-					return true
+    'use strict';
+    for (var j = 0; j < 4; j++) {
+        for (var i = 1; i < 4; i++) {
+            if (board[i][j] !== 0) {
+                if (board[i - 1][j] === 0 || board[i - 1][j] === board[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
 
-	return false
+    return false;
 }
 
 function canMoveDown(board) {
-	for(var j = 0; j < 4; j++)
-		for(var i = 2; i >= 0; i--)
-			if (board[i][j] != 0)
-				if (board[i+1][j] == 0 || board[i+1][j] == board[i][j])
-					return true
+    'use strict';
+    for (var j = 0; j < 4; j++) {
+        for (var i = 2; i >= 0; i--) {
+            if (board[i][j] !== 0) {
+                if (board[i + 1][j] === 0 || board[i + 1][j] === board[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
 
-	return false
+    return false;
 }
 
 
 function noBlockHorizontal(row, col1, col2, board) {
-	for(var i = col1 + 1; i < col2; i++)
-		if(board[row][i] != 0)
-			return false;
-	
-	return true;
+    'use strict';
+    for (var i = col1 + 1; i < col2; i++) {
+        if (board[row][i] !== 0) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function noBlockVertical(col, row1, row2, board) {
-	for(var i = row1 + 1; i < row2; i++)
-		if(board[i][col] != 0)
-			return false;
+    'use strict';
+    for (var i = row1 + 1; i < row2; i++) {
+        if (board[i][col] !== 0) {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
