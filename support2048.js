@@ -19,31 +19,31 @@ function getNumberBackgroundColor(number) {
     'use strict';
     switch (number) {
         case 2:
-            return "#eee4da";
+            return "#eee";
         case 4:
-            return "#ede0b8";
+            return "#70572e";
         case 8:
-            return "#f2b179";
+            return "#d75538";
         case 16:
-            return "#f59563";
+            return "#56d183";
         case 32:
-            return "#f67e5f";
+            return "#3371fa";
         case 64:
-            return "#f65e3b";
+            return "#aa4bf4";
         case 128:
-            return "#edbf52";
+            return "#101e63";
         case 256:
-            return "#edcc61";
+            return "#fff6d9";
         case 512:
-            return "#9c0";
+            return "#b59870";
         case 1024:
-            return "#33b5e5";
+            return "#e63459";
         case 2048:
-            return "#09c";
+            return "#1d5243";
         case 4096:
-            return "#a6c";
+            return "#432950";
         case 8192:
-            return "#93e";
+            return "#093d5e";
     }
     return "black";
 }
@@ -83,7 +83,7 @@ function numberToText(number) {
 
 function getNumberColor(number) {
     'use strict';
-    if (number <= 4) {
+    if (number <= 2) {
         return "#776e65";
     }
 
